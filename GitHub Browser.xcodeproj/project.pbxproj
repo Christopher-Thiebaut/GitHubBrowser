@@ -12,7 +12,8 @@
 		B37573342245696C00FE82D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B37573322245696C00FE82D2 /* Main.storyboard */; };
 		B37573362245696E00FE82D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B37573352245696E00FE82D2 /* Assets.xcassets */; };
 		B37573392245696E00FE82D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B37573372245696E00FE82D2 /* LaunchScreen.storyboard */; };
-		B37573442245696E00FE82D2 /* GitHub_BrowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37573432245696E00FE82D2 /* GitHub_BrowserTests.swift */; };
+		B375734F22457A7900FE82D2 /* GitHubQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B375734E22457A7900FE82D2 /* GitHubQuery.swift */; };
+		B394E3882246FD3F00259E6E /* GitHubQueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394E3872246FD3F00259E6E /* GitHubQueryTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,8 +35,9 @@
 		B37573382245696E00FE82D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B375733A2245696E00FE82D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B375733F2245696E00FE82D2 /* GitHub BrowserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GitHub BrowserTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B37573432245696E00FE82D2 /* GitHub_BrowserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHub_BrowserTests.swift; sourceTree = "<group>"; };
 		B37573452245696E00FE82D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B375734E22457A7900FE82D2 /* GitHubQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubQuery.swift; sourceTree = "<group>"; };
+		B394E3872246FD3F00259E6E /* GitHubQueryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubQueryTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				B37573352245696E00FE82D2 /* Assets.xcassets */,
 				B37573372245696E00FE82D2 /* LaunchScreen.storyboard */,
 				B375733A2245696E00FE82D2 /* Info.plist */,
+				B375734E22457A7900FE82D2 /* GitHubQuery.swift */,
 			);
 			path = "GitHub Browser";
 			sourceTree = "<group>";
@@ -90,8 +93,8 @@
 		B37573422245696E00FE82D2 /* GitHub BrowserTests */ = {
 			isa = PBXGroup;
 			children = (
-				B37573432245696E00FE82D2 /* GitHub_BrowserTests.swift */,
 				B37573452245696E00FE82D2 /* Info.plist */,
+				B394E3872246FD3F00259E6E /* GitHubQueryTests.swift */,
 			);
 			path = "GitHub BrowserTests";
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 					};
 					B375733E2245696E00FE82D2 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 						TestTargetID = B375732A2245696C00FE82D2;
 					};
 				};
@@ -199,6 +203,7 @@
 			files = (
 				B37573312245696C00FE82D2 /* ViewController.swift in Sources */,
 				B375732F2245696C00FE82D2 /* AppDelegate.swift in Sources */,
+				B375734F22457A7900FE82D2 /* GitHubQuery.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B37573442245696E00FE82D2 /* GitHub_BrowserTests.swift in Sources */,
+				B394E3882246FD3F00259E6E /* GitHubQueryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +402,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JM5E6M7XJW;
 				INFOPLIST_FILE = "GitHub BrowserTests/Info.plist";
@@ -407,6 +413,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.christopherthiebaut.GitHub-BrowserTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GitHub Browser.app/GitHub Browser";
@@ -418,6 +425,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JM5E6M7XJW;
 				INFOPLIST_FILE = "GitHub BrowserTests/Info.plist";
