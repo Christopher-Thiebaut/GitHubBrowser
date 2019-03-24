@@ -14,6 +14,9 @@
 		B37573392245696E00FE82D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B37573372245696E00FE82D2 /* LaunchScreen.storyboard */; };
 		B375734F22457A7900FE82D2 /* GitHubQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B375734E22457A7900FE82D2 /* GitHubQuery.swift */; };
 		B394E3882246FD3F00259E6E /* GitHubQueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394E3872246FD3F00259E6E /* GitHubQueryTests.swift */; };
+		B394E38B22471A9400259E6E /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394E38A22471A9400259E6E /* Commit.swift */; };
+		B394E3902247C59800259E6E /* CommitResponseV3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394E38F2247C59800259E6E /* CommitResponseV3.swift */; };
+		B394E3922247C70300259E6E /* RestAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394E3912247C70300259E6E /* RestAPITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,9 @@
 		B37573452245696E00FE82D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B375734E22457A7900FE82D2 /* GitHubQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubQuery.swift; sourceTree = "<group>"; };
 		B394E3872246FD3F00259E6E /* GitHubQueryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubQueryTests.swift; sourceTree = "<group>"; };
+		B394E38A22471A9400259E6E /* Commit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commit.swift; sourceTree = "<group>"; };
+		B394E38F2247C59800259E6E /* CommitResponseV3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitResponseV3.swift; sourceTree = "<group>"; };
+		B394E3912247C70300259E6E /* RestAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,7 @@
 		B375732D2245696C00FE82D2 /* GitHub Browser */ = {
 			isa = PBXGroup;
 			children = (
+				B394E38922471A7C00259E6E /* Models */,
 				B375732E2245696C00FE82D2 /* AppDelegate.swift */,
 				B37573302245696C00FE82D2 /* ViewController.swift */,
 				B37573322245696C00FE82D2 /* Main.storyboard */,
@@ -95,8 +102,18 @@
 			children = (
 				B37573452245696E00FE82D2 /* Info.plist */,
 				B394E3872246FD3F00259E6E /* GitHubQueryTests.swift */,
+				B394E3912247C70300259E6E /* RestAPITests.swift */,
 			);
 			path = "GitHub BrowserTests";
+			sourceTree = "<group>";
+		};
+		B394E38922471A7C00259E6E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B394E38A22471A9400259E6E /* Commit.swift */,
+				B394E38F2247C59800259E6E /* CommitResponseV3.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +218,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B394E38B22471A9400259E6E /* Commit.swift in Sources */,
+				B394E3902247C59800259E6E /* CommitResponseV3.swift in Sources */,
 				B37573312245696C00FE82D2 /* ViewController.swift in Sources */,
 				B375732F2245696C00FE82D2 /* AppDelegate.swift in Sources */,
 				B375734F22457A7900FE82D2 /* GitHubQuery.swift in Sources */,
@@ -211,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B394E3922247C70300259E6E /* RestAPITests.swift in Sources */,
 				B394E3882246FD3F00259E6E /* GitHubQueryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

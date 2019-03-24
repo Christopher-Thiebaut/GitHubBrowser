@@ -10,14 +10,14 @@ import Foundation
 
 class GitHubQuery {
     
+    enum ParsingError: Error {
+        case invalidFormat
+    }
+    
     class var context: String {
         return "{ \"query\": \"query { %@ } \"}"
     }
     class User {
-        
-        enum ParsingError: Error {
-            case invalidFormat
-        }
         
         let name: String
         
@@ -89,11 +89,66 @@ class GitHubQuery {
             let hash = "oid"
             return String(format: nodesContext, "\(hash) \(author) message")
         }
+        
+        class func parseCommitsFrom(response data: Data) -> [Commit] {
+            let cleaned = data.removingControlCharacters()
+            do {
+                var commits = [Commit]()
+                let root = try JSONSerialization.jsonObject(with: cleaned) as? [String: Any]
+                let data = root?["data"] as? [String: Any]
+                let repo = data?["repository"] as? [String: Any]
+                let ref = repo?["ref"] as? [String: Any]
+                let target = ref?["target"] as? [String: Any]
+                let history = target?["history"] as? [String: Any]
+                guard let rawCommits = history?["nodes"] as? [[String: Any]] else {
+                    throw ParsingError.invalidFormat
+                }
+                for raw in rawCommits {
+                    guard let commit = Commit(withDictionary: raw) else { throw ParsingError.invalidFormat }
+                    commits.append(commit)
+                }
+                return commits
+            } catch let error {
+                NSLog("Failed to parse commit history from response: \(error.localizedDescription)")
+                return []
+            }
+        }
+    }
+}
+
+extension Commit {
+    init?(withDictionary dictionary: [String: Any]) {
+        let hashValue = dictionary["oid"] as? String
+        let author = dictionary["author"] as? [String: String]
+        let authorNameValue = author?["name"]
+        let messageValue = dictionary["message"] as? String
+        guard let hash = hashValue, let authorName = authorNameValue, let message = messageValue else {
+            return nil
+        }
+        self.init(hash: hash, author: authorName, message: message)
     }
 }
 
 extension String {
     var asEscapedQuoteString: String {
         return "\\\"\(self)\\\""
+    }
+    
+    func removingControlCharacters() -> String {
+        return components(separatedBy: .controlCharacters).joined()
+    }
+    
+}
+
+extension Data {
+    
+    var asString: String? {
+        return String(data: self, encoding: .utf8)
+    }
+    
+    func removingControlCharacters() -> Data {
+        guard let string = self.asString else { return self }
+        let cleaned = string.removingControlCharacters()
+        return cleaned.data(using: .utf8) ?? self
     }
 }
