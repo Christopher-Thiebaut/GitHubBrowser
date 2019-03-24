@@ -7,22 +7,7 @@
 //
 
 import Foundation
-//
-//struct Commit: Decodable {
-//    enum CodingKeys: String, CodingKey {
-//        case hash = "oid"
-//        case author
-//        case message
-//    }
-//
-//    let hash: String
-//    let author: Author
-//    let message: String
-//}
-//
-//struct Author: Decodable {
-//    let name: String
-//}
+
 struct Commit {
     let hash: String
     let author: String

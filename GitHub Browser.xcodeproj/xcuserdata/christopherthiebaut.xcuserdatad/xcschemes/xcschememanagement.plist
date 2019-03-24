@@ -4,10 +4,23 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>GitHub Browser.xcscheme_^#shared#^_</key>
+		<key>GitHub Browser.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>B375732A2245696C00FE82D2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B375733E2245696E00FE82D2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

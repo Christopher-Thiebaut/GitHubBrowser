@@ -17,6 +17,9 @@
 		B394E38B22471A9400259E6E /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394E38A22471A9400259E6E /* Commit.swift */; };
 		B394E3902247C59800259E6E /* CommitResponseV3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394E38F2247C59800259E6E /* CommitResponseV3.swift */; };
 		B394E3922247C70300259E6E /* RestAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394E3912247C70300259E6E /* RestAPITests.swift */; };
+		B394E3942248324100259E6E /* GithubAPIv4.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394E3932248324100259E6E /* GithubAPIv4.swift */; };
+		B394E3962248326400259E6E /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394E3952248326400259E6E /* Result.swift */; };
+		B394E39A22483E2D00259E6E /* TokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394E39922483E2D00259E6E /* TokenProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		B394E38A22471A9400259E6E /* Commit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commit.swift; sourceTree = "<group>"; };
 		B394E38F2247C59800259E6E /* CommitResponseV3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitResponseV3.swift; sourceTree = "<group>"; };
 		B394E3912247C70300259E6E /* RestAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPITests.swift; sourceTree = "<group>"; };
+		B394E3932248324100259E6E /* GithubAPIv4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPIv4.swift; sourceTree = "<group>"; };
+		B394E3952248326400259E6E /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		B394E39922483E2D00259E6E /* TokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +98,7 @@
 				B37573352245696E00FE82D2 /* Assets.xcassets */,
 				B37573372245696E00FE82D2 /* LaunchScreen.storyboard */,
 				B375733A2245696E00FE82D2 /* Info.plist */,
-				B375734E22457A7900FE82D2 /* GitHubQuery.swift */,
+				B394E39722483DEA00259E6E /* API */,
 			);
 			path = "GitHub Browser";
 			sourceTree = "<group>";
@@ -112,8 +118,27 @@
 			children = (
 				B394E38A22471A9400259E6E /* Commit.swift */,
 				B394E38F2247C59800259E6E /* CommitResponseV3.swift */,
+				B394E3952248326400259E6E /* Result.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B394E39722483DEA00259E6E /* API */ = {
+			isa = PBXGroup;
+			children = (
+				B394E39822483E0500259E6E /* GraphQL */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		B394E39822483E0500259E6E /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				B375734E22457A7900FE82D2 /* GitHubQuery.swift */,
+				B394E3932248324100259E6E /* GithubAPIv4.swift */,
+				B394E39922483E2D00259E6E /* TokenProvider.swift */,
+			);
+			path = GraphQL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,9 +245,12 @@
 			files = (
 				B394E38B22471A9400259E6E /* Commit.swift in Sources */,
 				B394E3902247C59800259E6E /* CommitResponseV3.swift in Sources */,
+				B394E39A22483E2D00259E6E /* TokenProvider.swift in Sources */,
 				B37573312245696C00FE82D2 /* ViewController.swift in Sources */,
 				B375732F2245696C00FE82D2 /* AppDelegate.swift in Sources */,
+				B394E3962248326400259E6E /* Result.swift in Sources */,
 				B375734F22457A7900FE82D2 /* GitHubQuery.swift in Sources */,
+				B394E3942248324100259E6E /* GithubAPIv4.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
