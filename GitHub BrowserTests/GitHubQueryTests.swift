@@ -24,7 +24,7 @@ class GitHubQueryTests: XCTestCase {
     }
     
     func testRepoQueryResponseParsing() {
-        let repoNames = GitHubQuery.User.decodeRepositoryNamesFrom(response: Data.repoQueryResponse) 
+        let repoNames = (try? GitHubQuery.User.decodeRepositoryNamesFrom(response: Data.repoQueryResponse)) ?? []
         XCTAssertEqual(repoNames.count, 12)
     }
     
@@ -50,7 +50,7 @@ class GitHubQueryTests: XCTestCase {
     }
 }
 
-fileprivate extension Data {
+extension Data {
     static var repoQueryResponse: Data! {
         return """
         {"data":{"user":{"repositories":{"nodes":[{"name":"AndroidTest"},{"name":"FoodTracker"},{"name":"notes"},{"name":"BulletinBoard"},{"name":"Calculator"},{"name":"ProgramaticConstraintsWithAnimations"},{"name":"Checkers"},{"name":"RandomGroupPicker"},{"name":"Strategic-Marketing-Planner"},{"name":"Homeworld-Defender"},{"name":"OilChangeTracker"},{"name":"RxWeather"}]}}}}

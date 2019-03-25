@@ -42,7 +42,7 @@ class GitHubAPIv4: GitHubAPI {
     func getCommitHistoryForRepository(_ repository: String, ownedBy owner: String, completion: @escaping (Result<[Commit]>) -> Void) {
         do {
             let repo = GitHubQuery.Repository(ownerName: owner, repositoryName: repository)
-            let query = repo.getCommitHistoryQueryFor(branch: "master", first: 25)//.User(name: user).getRepositoryNamesQuery(first: 100)
+            let query = repo.getCommitHistoryQueryFor(branch: "master", first: 25)
             let request = try buildRequestWithQuery(query)
             getModelsWithRequest(request, modelProducingClosure: GitHubQuery.Repository.parseCommitsFrom, completion: completion)
         } catch let error {
@@ -68,18 +68,19 @@ class GitHubAPIv4: GitHubAPI {
             let httpStatus = (response as? HTTPURLResponse)?.statusCode ?? 200
             do {
                 if let error = error { throw error }
-                guard !(200..<300).contains(httpStatus) else { throw FetchError.badResponseCode(httpStatus) }
+                guard (200..<300).contains(httpStatus) else { throw FetchError.badResponseCode(httpStatus) }
                 guard let data = data else { throw FetchError.noData }
                 completion(.success(data))
             } catch let error {
                 completion(.failure(error))
             }
-        }
+        }.resume()
     }
     
     private func buildRequestWithQuery(_ query: String) throws -> URLRequest {
         let token = try tokenProvider.getToken()
         var request = URLRequest(url: endpoint)
+        request.httpMethod = "POST"
         request.allHTTPHeaderFields = ["Authorization": "Bearer \(token)"]
         request.httpBody = query.data(using: .utf8)
         return request
