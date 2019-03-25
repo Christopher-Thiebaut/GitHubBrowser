@@ -23,6 +23,8 @@
 		B394E3A0224863BF00259E6E /* CommitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394E39E224863BF00259E6E /* CommitTableViewCell.swift */; };
 		B394E3A1224863BF00259E6E /* CommitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B394E39F224863BF00259E6E /* CommitTableViewCell.xib */; };
 		B394E3A52248667100259E6E /* CommitsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394E3A32248667100259E6E /* CommitsTableViewController.swift */; };
+		B394E3A82249249F00259E6E /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394E3A72249249F00259E6E /* Repository.swift */; };
+		B394E3AA2249255A00259E6E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394E3A92249255A00259E6E /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		B394E39E224863BF00259E6E /* CommitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitTableViewCell.swift; sourceTree = "<group>"; };
 		B394E39F224863BF00259E6E /* CommitTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommitTableViewCell.xib; sourceTree = "<group>"; };
 		B394E3A32248667100259E6E /* CommitsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitsTableViewController.swift; sourceTree = "<group>"; };
+		B394E3A72249249F00259E6E /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		B394E3A92249255A00259E6E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 				B394E39722483DEA00259E6E /* API */,
 				B394E3A2224863D200259E6E /* Views */,
 				B394E3A32248667100259E6E /* CommitsTableViewController.swift */,
+				B394E3A92249255A00259E6E /* Coordinator.swift */,
 			);
 			path = "GitHub Browser";
 			sourceTree = "<group>";
@@ -126,6 +131,7 @@
 			children = (
 				B394E38A22471A9400259E6E /* Commit.swift */,
 				B394E3952248326400259E6E /* Result.swift */,
+				B394E3A72249249F00259E6E /* Repository.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -274,8 +280,10 @@
 				B394E3902247C59800259E6E /* CommitResponseV3.swift in Sources */,
 				B394E39A22483E2D00259E6E /* TokenProvider.swift in Sources */,
 				B37573312245696C00FE82D2 /* ViewController.swift in Sources */,
+				B394E3A82249249F00259E6E /* Repository.swift in Sources */,
 				B375732F2245696C00FE82D2 /* AppDelegate.swift in Sources */,
 				B394E3962248326400259E6E /* Result.swift in Sources */,
+				B394E3AA2249255A00259E6E /* Coordinator.swift in Sources */,
 				B375734F22457A7900FE82D2 /* GitHubQuery.swift in Sources */,
 				B394E3A0224863BF00259E6E /* CommitTableViewCell.swift in Sources */,
 				B394E3942248324100259E6E /* GithubAPIv4.swift in Sources */,

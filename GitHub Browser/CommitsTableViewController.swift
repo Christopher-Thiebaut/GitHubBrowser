@@ -15,10 +15,16 @@ final class CommitsTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
+    var showLoadingUI = true {
+        didSet {
+            updateLoadingUI()
+        }
+    }
     
     init() {
         super.init(style: .plain)
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.tableFooterView = UIView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -27,13 +33,25 @@ final class CommitsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateLoadingUI()
         let nib = UINib(nibName: CommitTableViewCell.nibName, bundle: Bundle(for: CommitTableViewCell.self))
         tableView.register(nib, forCellReuseIdentifier: CommitTableViewCell.nibName)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    func updateLoadingUI() {
+        if showLoadingUI {
+            let backgroundView = UIView()
+//            backgroundView.translatesAutoresizingMaskIntoConstraints = false
+            let loadingLabel = UILabel()
+            loadingLabel.translatesAutoresizingMaskIntoConstraints = false
+            loadingLabel.text = "Loading Commits..."
+            backgroundView.addSubview(loadingLabel)
+            loadingLabel.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor).isActive = true
+            loadingLabel.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor).isActive = true
+            tableView.backgroundView = backgroundView
+        } else {
+            tableView.backgroundView = nil
+        }
     }
 
     // MARK: - Table view data source
