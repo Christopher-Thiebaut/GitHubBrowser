@@ -30,14 +30,14 @@ class GitHubRepositoryCoordinator: Coordinator {
         window = UIWindow()
         navigationController = UINavigationController(rootViewController: commitsViewController)
         window.rootViewController = navigationController
-//        self.navigationController = navigationController
         self.gitHubApi = gitHubApi
     }
     
     func start() {
         commitsViewController.commitSource = self
+        commitsViewController.delegate = self
+        commitsViewController.title = "Commit Browser"
         window.makeKeyAndVisible()
-//        navigationController.pushViewController(commitsViewController, animated: false)
     }
 
 }
@@ -57,5 +57,33 @@ extension GitHubRepositoryCoordinator: CommitsDataSource {
             return
         }
         gitHubApi.getCommitHistoryForRepository(repository.name, ownedBy: repository.owner, completion: completion)
+    }
+}
+
+extension GitHubRepositoryCoordinator: CommitsTableViewControllerDelegate {
+    
+    func getRepositoryName() -> String? {
+        return repository.name
+    }
+    
+    func navigateToChangeRepository() {
+        let repoViewController = RepositoryTableViewController()
+        repoViewController.delegate = self
+        repoViewController.repoSource = self
+        repoViewController.owner = repository.owner
+        navigationController.pushViewController(repoViewController, animated: true)
+    }
+}
+
+extension GitHubRepositoryCoordinator: RepositoryTableViewControllerDelegate {
+    func selectedRepository(_ repository: Repository) {
+        self.repository = repository
+        navigationController.popToRootViewController(animated: true)
+    }
+}
+
+extension GitHubRepositoryCoordinator: RepoSource {
+    func getRepositoriesWithOwner(name: String, completion: @escaping (Result<[String]>) -> Void) {
+        gitHubApi.getRepositoryListForUser(user: name, completion: completion)
     }
 }

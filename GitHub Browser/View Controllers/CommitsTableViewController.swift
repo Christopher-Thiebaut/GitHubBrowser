@@ -12,16 +12,26 @@ protocol CommitsDataSource: class {
     func getCommits(completion: @escaping (Result<[Commit]>) -> Void)
 }
 
+protocol CommitsTableViewControllerDelegate: class {
+    func getRepositoryName() -> String?
+    func navigateToChangeRepository()
+}
+
 final class CommitsTableViewController: UITableViewController, TextShower {
     
     var commits = [Commit]() {
         didSet {
-            showText(text: nil)
             tableView.reloadData()
+            guard commits.count > 0 else {
+                showText(text: "Looks like there's no commits here.")
+                return
+            }
+            showText(text: nil)
         }
     }
     
     weak var commitSource: CommitsDataSource?
+    weak var delegate: CommitsTableViewControllerDelegate?
     
     init() {
         super.init(style: .plain)
@@ -37,6 +47,7 @@ final class CommitsTableViewController: UITableViewController, TextShower {
         super.viewDidLoad()
         let nib = UINib(nibName: CommitTableViewCell.nibName, bundle: Bundle(for: CommitTableViewCell.self))
         tableView.register(nib, forCellReuseIdentifier: CommitTableViewCell.nibName)
+        tableView.sectionHeaderHeight = UITableView.automaticDimension
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,6 +87,30 @@ final class CommitsTableViewController: UITableViewController, TextShower {
         commitCell.hashLabel.text = commit.hash
         commitCell.messageLabel.text = commit.message
         return commitCell
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let repoName = delegate?.getRepositoryName(), section == 0 else { return nil }
+        let headerView = UIView()
+        headerView.backgroundColor = .white
+        let changeButton = UIButton(type: .system)
+        changeButton.setTitle("Change", for: .normal)
+        changeButton.addTarget(self, action: #selector(navigateToChangeRepos), for: .touchUpInside)
+        let currentRepositoryLabel = UILabel()
+        currentRepositoryLabel.text = "Viewing: \(repoName)"
+        let headerContents = UIStackView(arrangedSubviews: [currentRepositoryLabel, changeButton])
+        headerContents.axis = .horizontal
+        headerContents.translatesAutoresizingMaskIntoConstraints = false
+        headerView.addSubview(headerContents)
+        headerContents.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 8).isActive = true
+        headerContents.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -8).isActive = true
+        headerContents.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 8).isActive = true
+        headerContents.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -8).isActive = true
+        return headerView
+    }
+    
+    @objc func navigateToChangeRepos() {
+        delegate?.navigateToChangeRepository()
     }
     
 }
