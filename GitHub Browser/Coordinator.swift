@@ -20,7 +20,7 @@ class GitHubRepositoryCoordinator: Coordinator {
     
     let gitHubApi: GitHubAPI
     
-    var repository = Repository(owner: "Christopher-Thiebaut", name: "Homeworld-Defender")
+    var repository = Repository(owner: "Christopher-Thiebaut", name: "GitHubBrowser")
     
     var lastFetch: (repo: Repository, commits: [Commit])?
     
@@ -36,7 +36,7 @@ class GitHubRepositoryCoordinator: Coordinator {
     func start() {
         commitsViewController.commitSource = self
         commitsViewController.delegate = self
-        commitsViewController.title = "Commit Browser"
+        commitsViewController.title = "GitHub Browser"
         window.makeKeyAndVisible()
     }
 

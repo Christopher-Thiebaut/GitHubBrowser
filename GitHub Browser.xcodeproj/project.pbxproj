@@ -101,13 +101,11 @@
 			children = (
 				B394E38922471A7C00259E6E /* Models */,
 				B375732E2245696C00FE82D2 /* AppDelegate.swift */,
-				B37573352245696E00FE82D2 /* Assets.xcassets */,
-				B37573372245696E00FE82D2 /* LaunchScreen.storyboard */,
-				B375733A2245696E00FE82D2 /* Info.plist */,
+				B394E3A92249255A00259E6E /* Coordinator.swift */,
 				B394E39722483DEA00259E6E /* API */,
 				B394E3A2224863D200259E6E /* Views */,
 				B3927122224957870026C276 /* View Controllers */,
-				B394E3A92249255A00259E6E /* Coordinator.swift */,
+				B3927129224968530026C276 /* Resources */,
 			);
 			path = "GitHub Browser";
 			sourceTree = "<group>";
@@ -129,6 +127,16 @@
 				B3927127224958A70026C276 /* RepositoryTableViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		B3927129224968530026C276 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B37573352245696E00FE82D2 /* Assets.xcassets */,
+				B37573372245696E00FE82D2 /* LaunchScreen.storyboard */,
+				B375733A2245696E00FE82D2 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		B394E38922471A7C00259E6E /* Models */ = {
@@ -447,7 +455,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JM5E6M7XJW;
-				INFOPLIST_FILE = "GitHub Browser/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/GitHub Browser/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -465,7 +473,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JM5E6M7XJW;
-				INFOPLIST_FILE = "GitHub Browser/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/GitHub Browser/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
