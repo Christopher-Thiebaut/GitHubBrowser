@@ -141,6 +141,7 @@ extension Data {
         return String(data: self, encoding: .utf8)
     }
     
+    ///For some reason, sometimes the GitHub API seems to include control characters that shouldn't be there.  I'm not sure if there from unsanitized user-generated data or what, but they break JSON parsing.
     func removingControlCharacters() -> Data {
         guard let string = self.asString else { return self }
         let cleaned = string.removingControlCharacters()
