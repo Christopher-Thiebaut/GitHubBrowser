@@ -20,6 +20,9 @@
 		B394E3942248324100259E6E /* GithubAPIv4.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394E3932248324100259E6E /* GithubAPIv4.swift */; };
 		B394E3962248326400259E6E /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394E3952248326400259E6E /* Result.swift */; };
 		B394E39A22483E2D00259E6E /* TokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394E39922483E2D00259E6E /* TokenProvider.swift */; };
+		B394E3A0224863BF00259E6E /* CommitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394E39E224863BF00259E6E /* CommitTableViewCell.swift */; };
+		B394E3A1224863BF00259E6E /* CommitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B394E39F224863BF00259E6E /* CommitTableViewCell.xib */; };
+		B394E3A52248667100259E6E /* CommitsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394E3A32248667100259E6E /* CommitsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,9 @@
 		B394E3932248324100259E6E /* GithubAPIv4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPIv4.swift; sourceTree = "<group>"; };
 		B394E3952248326400259E6E /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		B394E39922483E2D00259E6E /* TokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProvider.swift; sourceTree = "<group>"; };
+		B394E39E224863BF00259E6E /* CommitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitTableViewCell.swift; sourceTree = "<group>"; };
+		B394E39F224863BF00259E6E /* CommitTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommitTableViewCell.xib; sourceTree = "<group>"; };
+		B394E3A32248667100259E6E /* CommitsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,8 @@
 				B37573372245696E00FE82D2 /* LaunchScreen.storyboard */,
 				B375733A2245696E00FE82D2 /* Info.plist */,
 				B394E39722483DEA00259E6E /* API */,
+				B394E3A2224863D200259E6E /* Views */,
+				B394E3A32248667100259E6E /* CommitsTableViewController.swift */,
 			);
 			path = "GitHub Browser";
 			sourceTree = "<group>";
@@ -117,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				B394E38A22471A9400259E6E /* Commit.swift */,
-				B394E38F2247C59800259E6E /* CommitResponseV3.swift */,
 				B394E3952248326400259E6E /* Result.swift */,
 			);
 			path = Models;
@@ -126,6 +133,7 @@
 		B394E39722483DEA00259E6E /* API */ = {
 			isa = PBXGroup;
 			children = (
+				B394E39D2248630000259E6E /* Rest */,
 				B394E39822483E0500259E6E /* GraphQL */,
 			);
 			path = API;
@@ -139,6 +147,23 @@
 				B394E39922483E2D00259E6E /* TokenProvider.swift */,
 			);
 			path = GraphQL;
+			sourceTree = "<group>";
+		};
+		B394E39D2248630000259E6E /* Rest */ = {
+			isa = PBXGroup;
+			children = (
+				B394E38F2247C59800259E6E /* CommitResponseV3.swift */,
+			);
+			path = Rest;
+			sourceTree = "<group>";
+		};
+		B394E3A2224863D200259E6E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B394E39E224863BF00259E6E /* CommitTableViewCell.swift */,
+				B394E39F224863BF00259E6E /* CommitTableViewCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +248,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B394E3A1224863BF00259E6E /* CommitTableViewCell.xib in Resources */,
 				B37573392245696E00FE82D2 /* LaunchScreen.storyboard in Resources */,
 				B37573362245696E00FE82D2 /* Assets.xcassets in Resources */,
 				B37573342245696C00FE82D2 /* Main.storyboard in Resources */,
@@ -243,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B394E3A52248667100259E6E /* CommitsTableViewController.swift in Sources */,
 				B394E38B22471A9400259E6E /* Commit.swift in Sources */,
 				B394E3902247C59800259E6E /* CommitResponseV3.swift in Sources */,
 				B394E39A22483E2D00259E6E /* TokenProvider.swift in Sources */,
@@ -250,6 +277,7 @@
 				B375732F2245696C00FE82D2 /* AppDelegate.swift in Sources */,
 				B394E3962248326400259E6E /* Result.swift in Sources */,
 				B375734F22457A7900FE82D2 /* GitHubQuery.swift in Sources */,
+				B394E3A0224863BF00259E6E /* CommitTableViewCell.swift in Sources */,
 				B394E3942248324100259E6E /* GithubAPIv4.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

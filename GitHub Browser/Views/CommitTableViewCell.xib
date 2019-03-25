@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="179" id="KGk-i7-Jjw" customClass="CommitTableViewCell" customModule="GitHub_Browser" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="482" height="179"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="482" height="178.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="(Author Name)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WlU-uh-5Pc">
+                        <rect key="frame" x="28" y="19" width="426" height="26.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="d5w-na-YUq">
+                        <rect key="frame" x="28" y="61.5" width="426" height="20.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="251" text="Commit:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1a-Gs-mHL">
+                                <rect key="frame" x="0.0" y="0.0" width="64.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(hash)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wql-79-3RJ">
+                                <rect key="frame" x="72.5" y="0.0" width="353.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Commit Message)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXi-Mk-Qdg">
+                        <rect key="frame" x="28" y="98" width="426" height="62"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="WlU-uh-5Pc" secondAttribute="trailing" constant="8" id="HuH-Z4-pHu"/>
+                    <constraint firstItem="aXi-Mk-Qdg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="RRy-IN-ZdC"/>
+                    <constraint firstItem="aXi-Mk-Qdg" firstAttribute="top" secondItem="d5w-na-YUq" secondAttribute="bottom" constant="16" id="RzF-Q1-oNo"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="d5w-na-YUq" secondAttribute="trailing" constant="8" id="TTq-bF-hwe"/>
+                    <constraint firstItem="d5w-na-YUq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="hFv-ia-Y0j"/>
+                    <constraint firstItem="WlU-uh-5Pc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="hl3-s3-Sic"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="aXi-Mk-Qdg" secondAttribute="bottom" constant="8" id="ohz-Oz-dqs"/>
+                    <constraint firstItem="d5w-na-YUq" firstAttribute="top" secondItem="WlU-uh-5Pc" secondAttribute="bottom" constant="16" id="pac-t0-4l4"/>
+                    <constraint firstItem="WlU-uh-5Pc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="ufs-re-Tbp"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="aXi-Mk-Qdg" secondAttribute="trailing" constant="8" id="ya1-Ce-dAe"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="hashLabel" destination="wql-79-3RJ" id="AM7-ph-iez"/>
+                <outlet property="messageLabel" destination="aXi-Mk-Qdg" id="4Z4-Nj-mzM"/>
+                <outlet property="nameLabel" destination="WlU-uh-5Pc" id="QqF-bW-280"/>
+            </connections>
+            <point key="canvasLocation" x="29" y="125"/>
+        </tableViewCell>
+    </objects>
+</document>
