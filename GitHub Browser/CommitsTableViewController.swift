@@ -8,18 +8,20 @@
 
 import UIKit
 
-final class CommitsTableViewController: UITableViewController {
+protocol CommitsDataSource: class {
+    func getCommits(completion: @escaping (Result<[Commit]>) -> Void)
+}
 
+final class CommitsTableViewController: UITableViewController, TextShower {
+    
     var commits = [Commit]() {
         didSet {
+            showText(text: nil)
             tableView.reloadData()
         }
     }
-    var showLoadingUI = true {
-        didSet {
-            updateLoadingUI()
-        }
-    }
+    
+    weak var commitSource: CommitsDataSource?
     
     init() {
         super.init(style: .plain)
@@ -33,25 +35,23 @@ final class CommitsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateLoadingUI()
         let nib = UINib(nibName: CommitTableViewCell.nibName, bundle: Bundle(for: CommitTableViewCell.self))
         tableView.register(nib, forCellReuseIdentifier: CommitTableViewCell.nibName)
     }
     
-    func updateLoadingUI() {
-        if showLoadingUI {
-            let backgroundView = UIView()
-//            backgroundView.translatesAutoresizingMaskIntoConstraints = false
-            let loadingLabel = UILabel()
-            loadingLabel.translatesAutoresizingMaskIntoConstraints = false
-            loadingLabel.text = "Loading Commits..."
-            backgroundView.addSubview(loadingLabel)
-            loadingLabel.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor).isActive = true
-            loadingLabel.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor).isActive = true
-            tableView.backgroundView = backgroundView
-        } else {
-            tableView.backgroundView = nil
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        showText(text: "Loading Commits...")
+        commitSource?.getCommits(completion: { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let commits):
+                    self?.commits = commits
+                case .failure(_):
+                    self?.showText(text: "There was an error loading those commits. Please try again later.")
+                }
+            }
+        })
     }
 
     // MARK: - Table view data source
@@ -78,4 +78,25 @@ final class CommitsTableViewController: UITableViewController {
         return commitCell
     }
     
+}
+
+protocol TextShower {
+    func showText(text: String?)
+}
+
+extension TextShower where Self: UITableViewController {
+    func showText(text: String?) {
+        if let text = text {
+            let backgroundView = UIView()
+            let loadingLabel = UILabel()
+            loadingLabel.translatesAutoresizingMaskIntoConstraints = false
+            loadingLabel.text = text
+            backgroundView.addSubview(loadingLabel)
+            loadingLabel.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor).isActive = true
+            loadingLabel.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor).isActive = true
+            tableView.backgroundView = backgroundView
+        } else {
+            tableView.backgroundView = nil
+        }
+    }
 }

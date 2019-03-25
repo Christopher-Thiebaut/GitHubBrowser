@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Repository {
+struct Repository: Equatable {
     let owner: String
     let name: String
 }

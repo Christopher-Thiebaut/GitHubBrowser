@@ -11,11 +11,12 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-
+    var rootCoordinator: Coordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let tokenProvider = EnvironmentTokenProvider()
+        rootCoordinator = GitHubRepositoryCoordinator(gitHubApi: GitHubAPIv4(tokenProvider: tokenProvider))
+        rootCoordinator?.start()
         return true
     }
 

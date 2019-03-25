@@ -16,13 +16,46 @@ class GitHubRepositoryCoordinator: Coordinator {
     
     let navigationController: UINavigationController
     
-    var defaultRepository = Repository(owner: "Christopher-Thiebaut", name: "Homeworld-Defender")
+    let window: UIWindow
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    let gitHubApi: GitHubAPI
+    
+    var repository = Repository(owner: "Christopher-Thiebaut", name: "Homeworld-Defender")
+    
+    var lastFetch: (repo: Repository, commits: [Commit])?
+    
+    let commitsViewController = CommitsTableViewController()
+    
+    init(gitHubApi: GitHubAPI) {
+        window = UIWindow()
+        navigationController = UINavigationController(rootViewController: commitsViewController)
+        window.rootViewController = navigationController
+//        self.navigationController = navigationController
+        self.gitHubApi = gitHubApi
     }
     
     func start() {
-        
+        commitsViewController.commitSource = self
+        window.makeKeyAndVisible()
+//        navigationController.pushViewController(commitsViewController, animated: false)
+    }
+
+}
+
+extension GitHubRepositoryCoordinator: CommitsDataSource {
+    
+    var cachedCommitHistory: [Commit]? {
+        guard lastFetch?.repo == repository else {
+            return nil
+        }
+        return lastFetch?.commits
+    }
+    
+    func getCommits(completion: @escaping (Result<[Commit]>) -> Void) {
+        if let cachedCommits = cachedCommitHistory {
+            completion(.success(cachedCommits))
+            return
+        }
+        gitHubApi.getCommitHistoryForRepository(repository.name, ownedBy: repository.owner, completion: completion)
     }
 }
